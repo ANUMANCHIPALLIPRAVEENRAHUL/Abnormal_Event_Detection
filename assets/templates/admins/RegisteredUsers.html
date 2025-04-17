@@ -1,0 +1,158 @@
+{%extends 'admins/admin_base.html'%}
+{%block contents%}
+    <style>
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 30px;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .table {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            margin: 0 auto;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .table thead tr th {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 25px;
+            border: 3px solid #16213e;
+        }
+
+        .table tbody tr {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .table tbody tr:hover {
+            background: rgba(245, 245, 245, 0.98);
+            transform: translateX(4px);
+        }
+
+        .table tbody td {
+            padding: 1rem;
+            color: #2c3e50 !important;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            vertical-align: middle;
+        }
+
+        .btn-link {
+            background: #007bff;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        .btn-link:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 12px rgba(0, 123, 255, 0.2);
+        }
+
+        td:last-child {
+            font-weight: 500;
+        }
+
+        td:last-child:not(a) {
+            color: #28a745 !important;
+        }
+
+        @media (max-width: 768px) {
+            .table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .table thead tr th {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .table tbody td {
+                padding: 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .btn-link {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .wow.fadeInDown {
+            animation: adminFadeIn 1s ease forwards;
+        }
+    </style>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="wow fadeInDown">Welcome back Admin! You can proceed!</p>
+            </div>
+            <h2 align="center">View RegisterUser Details</h2><br>
+            <table class="table table-bordered bg-light text-dark">
+                <thead>
+                    <tr style="color:White;font-weight:bold;">
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Login ID</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Locality</th>
+                        <th>Status</th>
+                        <th>Activate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                    <tr style="color:White;font-weight:bold;">
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.loginid}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.locality}}</td>
+                        <td>{{i.status}}</td>
+                        {% if i.status == 'waiting' %}
+                        <td><a class="btn-link" href="/AdminActivaUsers/?uid={{ i.id }}">Activate</a></td>
+                        {% else %}
+                        <td>Activated</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{%endblock%}
+

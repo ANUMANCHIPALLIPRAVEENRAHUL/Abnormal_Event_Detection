@@ -1,0 +1,6 @@
+path: C:/MAJOR PROJECT/Deep Learning based Abnormal Event Detection/media/dataset
+train: images/train
+val: images/val
+
+nc: 2  # Number of classes
+names: ["normal", "abnormal"]

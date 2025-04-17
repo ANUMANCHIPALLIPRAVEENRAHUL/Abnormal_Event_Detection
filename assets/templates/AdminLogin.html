@@ -1,0 +1,149 @@
+{%extends 'base.html'%}
+{%block contents%}
+    <style>
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 30px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        form .form-group {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            font-weight: 500;
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="password"]:focus {
+            background: rgba(255, 255, 255, 1);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+        }
+
+        form button {
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 30px;
+            padding: 8px;
+        }
+
+        form button:hover {
+            color: black;
+            transform: translateY(-2px);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(18, 85, 157, 0.4);
+        }
+
+        .wow {
+            visibility: hidden;
+        }
+
+        .fadeInDown {
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        font[color='RED'] {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #ff4d4d;
+        }
+
+        @media (max-width: 768px) {
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            form input[type="text"],
+            form input[type="password"] {
+                width: 100%;
+            }
+        }
+    </style>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="wow fadeInDown" style="margin-top:20px;">Hello Admin! Please approve the users!</p>
+            </div>
+            <center>
+                <h2 class="row justify-content-center text-dark">
+                    <i class="fa fa-sign-in"  style="font-size:24px"> Admin Log In</i>
+                </h2><br>
+                <form action="{%url 'AdminLoginCheck'%}" method="post" novalidate>
+                {%csrf_token%}
+                    <div id="div_id_username" class="form-group"><label for="id_username" class="requiredField">Username<span class="asteriskField">*</span></label>
+                        <div>
+                            <input type="text" name="loginid" required autofocus autocapitalize="none" autocomplete="username" maxlength="150" class="textinput textInput form-control" required id="id_username">
+                        </div>
+                    </div>
+                    <div id="div_id_password" class="form-group"><label for="id_password" class="requiredField">Password<span class="asteriskField">*</span></label>
+                        <div>
+                            <input type="password" name="pswd" required autocomplete="current-password" class="textinput textInput form-control" required id="id_password">
+                        </div>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                {% if messages %}
+                {% for message in messages %}
+                <font color='RED'> {{ message }}</font>
+                {% endfor %}
+                {% endif %}
+                </center>
+            </div>
+    </section>
+{%endblock%}

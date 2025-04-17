@@ -1,0 +1,216 @@
+{%extends 'base.html'%}
+{%block contents%}
+    <style>
+        .section-header p {
+            font-size: 16px;
+            color: #ddd;
+            margin-top: 30px;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        form table {
+            width: 100%;
+        }
+
+        form td {
+            padding: 10px;
+        }
+
+        form td:first-child {
+            text-align: right;
+            padding-right: 20px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="email"],
+        form input[type="tel"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="password"]:focus,
+        form input[type="email"]:focus,
+        form input[type="tel"]:focus,
+        form select:focus,
+        form textarea:focus {
+            background: rgba(255, 255, 255, 1);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+        }
+
+        form button {
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 30px;
+            padding: 8px;
+        }
+
+        form button:hover {
+            color: black;
+            transform: translateY(-2px);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(18, 85, 157, 0.4);
+        }
+
+        .wow {
+            visibility: hidden;
+        }
+
+        .fadeInDown {
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            form td {
+                display: block;
+                width: 100%;
+                padding: 5px 0;
+            }
+
+            form td:first-child {
+                text-align: left;
+                padding-right: 0;
+            }
+
+            form input[type="text"],
+            form input[type="password"],
+            form input[type="email"],
+            form input[type="tel"],
+            form select,
+            form textarea {
+                width: 100%;
+            }
+        }
+        font[color='red'] {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #ff4d4d;
+        }
+    </style>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="wow fadeInDown">Welcome User! Register Here..and wait for approval to Login!</p>
+            </div>
+            <center>
+                <h2 style="color: White">
+                    <i class="fa fa-user-plus" style="font-size:24px"> Registration Form</i>
+                </h2><br>
+                <form action="{%url 'UserRegisterActions'%}" method="POST" style="width:100%">
+                {% csrf_token %}
+                    <table >
+                        <tr>
+                            <td style="color: White">User Name</td>
+                            <td style="color:black">{{form.name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Login ID</td>
+                            <td style="color:black">{{form.loginid}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Password</td>
+                            <td style="color:black">{{form.password}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Mobile</td>
+                            <td style="color:black">{{form.mobile}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Email</td>
+                            <td style="color:black">{{form.email}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Locality</td>
+                            <td style="color:black">{{form.locality}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">Address</td>
+                            <td style="color:black">{{form.address}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">City</td>
+                            <td style="color:black">{{form.city}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: White">State</td>
+                            <td style="color:black">{{form.state}}</td>
+                        </tr>
+                        <tr>
+                            <td style="color:black">{{form.status}}</td>
+                        </tr>
+                        <tr>
+                            <td> 
+                                <button type="submit">
+                                    Register
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group mt-3">
+                                    <span>&nbsp;</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <font color='red'> {{ message }}</font>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+                </form>
+            </center>
+        </div>
+    </section>
+{%endblock%}

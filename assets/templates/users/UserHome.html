@@ -1,0 +1,91 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="webthemez">
+    <title>Deep Learning based Abnormal Event Detection in Pedestrian Pathways</title>
+    <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/animate.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/prettyPhoto.css'%}" rel="stylesheet">
+    <link href="{%static 'css/styles.css'%}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/slider-style.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/slider-custom.css'%}" />
+	<script type="text/javascript" src="{%static 'js/modernizr.custom.79639.js'%}"></script>
+    <link rel="shortcut icon" href="{%static 'images/ico/favicon.ico'%}">
+</head>
+<body id="home">
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{%url 'index'%}"><h2 style="margin-top:15px;">Abnormal detection</h2></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href='User_Home?id={{id}}'>Home</a></li>
+                        <li><a href="#" id="trainBtn">DL</a></li>
+                        <li><a href='predict_image?id={{id}}'>Predictions</a></li>
+                        <li><a href='logout_views'>Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <script>
+        document.getElementById("trainBtn").addEventListener("click", function() {
+            fetch('/training/')
+        });
+    </script>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="wow fadeInDown">Deep Learning based Abnormal Event Detection in Pedestrian Pathways</p>
+            </div>
+            <p>
+            The UCSD Anomaly Detection Dataset was acquired with a stationary camera mounted at an elevation, overlooking pedestrian walkways. 
+            The crowd density in the walkways was variable, ranging from sparse to very crowded. In the normal setting, the video contains only pedestrians. 
+            Abnormal events are due to either: the circulation of non pedestrian entities in the walkways anomalous pedestrian motion patterns
+            Commonly occurring anomalies include bikers, skaters, small carts, and people walking across a walkway or in the grass that surrounds it. 
+            A few instances of people in wheelchair were also recorded. All abnormalities are naturally occurring, i.e. they were not staged for the purposes of assembling the dataset. 
+            The data was split into 2 subsets, each corresponding to a different scene. The video footage recorded from each scene was split into various clips of around 200 frames. 
+            Peds1: clips of groups of people walking towards and away from the camera, and some amount of perspective distortion. Contains 34 training video samples and 36 testing video samples. 
+            Peds2: scenes with pedestrian movement parallel to the camera plane. Contains 16 training video samples and 12 testing video samples. 
+            For each clip, the ground truth annotation includes a binary flag per frame, indicating whether an anomaly is present at that frame. 
+            In addition, a subset of 10 clips for Peds1 and 12 clips for Peds2 are provided with manually generated pixel-level binary masks, which identify the regions containing anomalies. 
+            This is intended to enable the evaluation of performance with respect to ability of algorithms to localize anomalies.
+            </p>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2025 All Rights Reserved</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{%static 'js/jquery.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/mousescroll.js'%}"></script>
+    <script src="{%static 'js/smoothscroll.js'%}"></script>
+    <script src="{%static 'js/jquery.prettyPhoto.js'%}"></script>
+    <script src="{%static 'js/jquery.isotope.min.js'%}"></script>
+    <script src="{%static 'js/jquery.inview.min.js'%}"></script>
+    <script src="{%static 'js/wow.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'js/jquery.ba-cond.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/jquery.slitslider.js'%}"></script>
+	<script type="text/javascript" src="{%static 'js/slitslider-custom.js'%}"></script>
+    <script src="{%static 'js/custom-scripts.js'%}"></script>
+</body>
+</html>
