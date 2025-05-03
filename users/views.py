@@ -86,7 +86,7 @@ def play_sound_alret():
     pygame.mixer.music.play()
 
 def mobile(to_number, message_body):
-    account_sid = 'AC840aa7fb4f3a7ea828a94c264ed41bea'
+    account_sid = 'USE_YOUR_TWILIO_ACCOUNT_SID'
     auth_token = 'e7055536beb7c1b464d4bdf82c9d375a'
     
     from_number = '+14352413636'
